@@ -1,12 +1,11 @@
 import { loadMenuData } from "./services/menu.js"
-import store from "./services/store.js";
+import registerCustomComponents from "./services/register-components.js";
+import Router from "./services/router.js";
 
 window.addEventListener("DOMContentLoaded", onDOMContentLoaded)
 
-window.app = {
-  store
-}
-
-async function onDOMContentLoaded() {
-  app.store.menu = await loadMenuData();
+function onDOMContentLoaded() {
+  loadMenuData();
+  Router.init();
+  registerCustomComponents();
 }
