@@ -16,6 +16,5 @@ export default class OrderPage extends HTMLElement {
     const template = document.getElementById("order-form-template");
     const content = template.content.cloneNode(true);
     this.root.appendChild(content); 
-    this.root.appendChild(content); 
   }
 }

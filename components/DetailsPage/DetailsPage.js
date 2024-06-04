@@ -16,6 +16,5 @@ export default class DetailsPage extends HTMLElement {
     const template = document.getElementById("details-page-template");
     const content = template.content.cloneNode(true);
     this.root.appendChild(content); 
-    this.root.appendChild(content); 
   }
 }
