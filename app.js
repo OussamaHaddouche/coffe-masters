@@ -1,5 +1,5 @@
 import { loadMenuData } from "./services/menu.js"
-import registerCustomComponents from "./services/register-components.js";
+import registerCustomComponents from "./services/custom-components/register-components.js";
 import Router from "./services/router.js";
 
 window.addEventListener("DOMContentLoaded", onDOMContentLoaded)

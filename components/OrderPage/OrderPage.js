@@ -1,20 +1,11 @@
-export default class OrderPage extends HTMLElement {
-  static elementName = "order-page"
-  constructor() {
-    super();
-    this.root = this.attachShadow({ mode: "open" });
-    const styles = document.createElement("style")
-    async function loadCSS() {
-      const request = await fetch("/components/OrderPage/OrderPage.css");
-      styles.textContent = await request.text();
-    }
-    loadCSS();
-    this.root.appendChild(styles)
-  }
+import Component from "../../services/custom-components/component.js";
 
-  connectedCallback() {
-    const template = document.getElementById("order-form-template");
-    const content = template.content.cloneNode(true);
-    this.root.appendChild(content); 
+export default class OrderPage extends Component {
+  static elementName = "order-page";
+  constructor() {
+    super({
+      styleUrl: "/components/OrderPage/OrderPage.css",
+      templateUrl: "/components/OrderPage/OrderPage.html",
+    });
   }
 }

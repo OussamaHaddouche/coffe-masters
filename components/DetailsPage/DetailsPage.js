@@ -1,20 +1,11 @@
-export default class DetailsPage extends HTMLElement {
-  static elementName = "details-page"
-  constructor() {
-    super();
-    this.root = this.attachShadow({ mode: "open" });
-    const styles = document.createElement("style")
-    async function loadCSS() {
-      const request = await fetch("/components/DetailsPage/DetailsPage.css");
-      styles.textContent = await request.text();
-    }
-    loadCSS();
-    this.root.appendChild(styles)
-  }
+import Component from "../../services/custom-components/component.js";
 
-  connectedCallback() {
-    const template = document.getElementById("details-page-template");
-    const content = template.content.cloneNode(true);
-    this.root.appendChild(content); 
+export default class DetailsPage extends Component {
+  static elementName = "details-page";
+  constructor() {
+    super({
+      styleUrl: "/components/DetailsPage/DetailsPage.css",
+      templateId: "/components/DetailsPage/DetailsPage.html",
+    });
   }
 }
