@@ -2,6 +2,8 @@
 
 ![Cofee masters logo](/images/logo.png "Cofee masters logo")
 
+[App demo](https://coffe-masters-morocco.netlify.app).
+
 > This project was made with vanilla js only
 
 ## Motivation
