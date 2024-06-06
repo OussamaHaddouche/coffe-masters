@@ -19,7 +19,6 @@ const Router = {
       history.pushState({ path }, null, path);
     }
     let page = null;
-    const mainElement = document.querySelector("main");
 
     switch (path) {
       case "/":
@@ -36,10 +35,24 @@ const Router = {
         }
         break;
     }
-    if (mainElement.children.length > 0) {
-      mainElement.children[0].remove();
-    }
-    mainElement.appendChild(page);
+    if (page) {
+      let currentPage = document.querySelector("main").firstElementChild; 
+      if (currentPage) {
+          let fadeOut = currentPage.animate([
+              {opacity: 1}, {opacity: 0}
+          ],{ duration: 200});
+          fadeOut.addEventListener("finish", () => {
+              currentPage.remove();
+              document.querySelector("main").appendChild(page);
+              let fadeIn = page.animate([
+                  {opacity: 0}, {opacity: 1}
+              ],{ duration: 200});
+          });
+      } else {
+          document.querySelector("main").appendChild(page);
+      }
+
+  }
   },
 };
 
