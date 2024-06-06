@@ -8,12 +8,14 @@ const Router = {
       });
     });
     window.addEventListener("popstate", (event) => {
-      this.go(event.state.path, false);
+      if (event?.state?.path) {
+        this.go(event.state.path, false);
+      }
     });
     this.go(location.pathname);
   },
-  go: (path, replace = false) => {
-    if (!replace) {
+  go: (path, addToHistory = true) => {
+    if (addToHistory) {
       history.pushState({ path }, null, path);
     }
     let page = null;
@@ -27,7 +29,7 @@ const Router = {
         page = document.createElement("order-page");
         break;
       default:
-        if (path.startsWith("/products-")) {
+        if (path.startsWith("/product-")) {
           page = document.createElement("details-page");
           const productId = path.split("-")[1];
           page.dataset.id = productId;

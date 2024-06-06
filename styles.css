@@ -49,3 +49,17 @@ a.navlink {
     padding: 8px;
     text-decoration: none;
 }
+
+#badge {
+    padding: 4px;
+    background-color: red;
+    border-radius: 15px;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    font-size: x-small;
+    color: white;
+    position: absolute;
+    right: 4px;
+    top: 6px;
+}

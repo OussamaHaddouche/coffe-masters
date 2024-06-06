@@ -16,21 +16,31 @@ async function loadTemplate(url, onLoadedTemplate) {
 }
 
 export default class Component extends HTMLElement {
-  constructor({ styleUrl, templateUrl }) {
+  constructor({ styleUrl, templateUrl, eventName, withShadowDom = true }) {
     super();
-    this.root = this.attachShadow({ mode: "open" });
+    this.root = withShadowDom ? this.attachShadow({ mode: "open" }): this;
     this.styleUrl = styleUrl;
     this.templateUrl = templateUrl;
+    this.eventName = eventName;
   }
 
   connectedCallback() {
     const styles = document.createElement("style");
-    loadCSS(this.styleUrl, (style) => {
-      styles.textContent = style;
-      this.root.appendChild(styles);
-    });
+    if (this.styleUrl) {
+      loadCSS(this.styleUrl, (style) => {
+        styles.textContent = style;
+        this.root.appendChild(styles);
+      });
+    }
     loadTemplate(this.templateUrl, (template) => {
       this.root.appendChild(template.content.cloneNode(true));
+    }).then(() => {
+      if (this.eventName) {
+        window.addEventListener(this.eventName, () => {
+          this.render();
+        });
+      }
+      this.render();
     });
   }
 }
