@@ -15,3 +15,4 @@ Libraries and frameworks are like trends – they can become popular and then fa
 - Menu of products
 - Details of each product
 - Order with Cart
+- PWA
