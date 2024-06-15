@@ -1,4 +1,4 @@
-# Cofee masters
+# Coffee masters
 
 ![Cofee masters logo](/images/logo.png "Cofee masters logo")
 
